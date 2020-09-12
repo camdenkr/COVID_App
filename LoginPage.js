@@ -74,19 +74,28 @@ class LoginPage extends React.Component {
                 );
             // Sign in with credential from the Google user.
             firebase.auth().signInWithCredential(credential).then(function(result){
-                console.log('signed in');
+                if(result.additionalUserInfo.isNewUser)
+                {
                 //save user to firebase database with the following information
                 firebase
                 .database()
                 .ref('/users/' + result.user.uid)
                 .set({
                     gmail: result.user.email,
-                    profile_picture: result.additionalUserInfo.profile.picture,
                     first_name: result.additionalUserInfo.profile.given_name,
-                    last_name: result.additionalUserInfo.profile.family_name
+                    last_name: result.additionalUserInfo.profile.family_name,
+                    created_at: Date.now()
                 })
                 //.then(function (snapshot)
                 //{});
+                }
+                else{
+                    firebase
+                .database()
+                .ref('/users/' + result.user.uid).update({
+                    last_logged_in: Date.now()
+                })
+                }
             })
             .catch(function(error) {
               // Handle Errors here.
