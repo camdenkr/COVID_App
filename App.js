@@ -1,10 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
+import { setStatusBarNetworkActivityIndicatorVisible, StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as firebase from 'firebase';
 import "firebase/auth";
+import HomePage from './HomePage';
+import LoginPage from './LoginPage';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+const Stack = createStackNavigator();
 // Initialize Firebase
-const firebaseConfig = {
+
+export const firebaseConfig = {
     apiKey: "AIzaSyBtpGx1Xx309_yWUvypMwkpb4pe6B0uFAM",
     authDomain: "covid-app-9ad6b.firebaseapp.com",
     databaseURL: "https://covid-app-9ad6b.firebaseio.com",
@@ -19,13 +25,23 @@ firebase.initializeApp(firebaseConfig);
 
 
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+class App extends React.Component {
+  render(){
+    return (
+      <NavigationContainer>
+          <Stack.Navigator>
+          <Stack.Screen
+              name="HomePage"
+              component={HomePage}
+            />
+            <Stack.Screen
+              name="LoginPage"
+              component={LoginPage}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -36,3 +52,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
