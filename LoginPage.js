@@ -7,6 +7,8 @@ import "firebase/auth";
 import { TextInput } from 'react-native-gesture-handler';
 import * as Google from 'expo-google-app-auth';
 import firebaseConfig from './App';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 
 const styles = StyleSheet.create({
@@ -32,11 +34,9 @@ class LoginPage extends React.Component {
             function (user) {
                 if (user) {
                     //if user is signed in already go to survey
-                    this.props.navigation.navigate('HomePage');
-                    console.log("Signed in Back to Home");
+                    this.props.navigation.replace('HomePage');
                 }
                 else {
-                    console.log('Please sign in: ')
                     //otherwise if not signed in do nothing so user can sign in
                     //this.props.navigation.navigate('HomePage');
                 }
@@ -136,12 +136,6 @@ class LoginPage extends React.Component {
         return (
             <View style={styles.container}>
                 <Text>Welcome to the login page!</Text>
-                <Button
-                    title="Back to home"
-                    onPress={() =>
-                        this.props.navigation.navigate('HomePage')
-                    }
-                />
                 <Button
                     title="Sign In With Google"
                     onPress={() =>

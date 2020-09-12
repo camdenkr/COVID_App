@@ -5,9 +5,9 @@ import * as firebase from 'firebase';
 import "firebase/auth";
 import HomePage from './HomePage';
 import LoginPage from './LoginPage';
+import COVID_Data from './COVID_Data';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-const Stack = createStackNavigator();
 // Initialize Firebase
 
 export const firebaseConfig = {
@@ -24,19 +24,23 @@ export const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
-
+const Stack = createStackNavigator();
 class App extends React.Component {
   render(){
     return (
       <NavigationContainer>
           <Stack.Navigator>
           <Stack.Screen
+              name="LoginPage"
+              component={LoginPage}
+            />
+          <Stack.Screen
               name="HomePage"
               component={HomePage}
             />
             <Stack.Screen
-              name="LoginPage"
-              component={LoginPage}
+              name="COVID_Data"
+              component={COVID_Data}
             />
           </Stack.Navigator>
         </NavigationContainer>
