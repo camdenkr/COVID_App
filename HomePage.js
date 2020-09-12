@@ -14,24 +14,7 @@ const styles = StyleSheet.create({
 });
 
 class HomePage extends React.Component {
-  componentDidMount() {
-    this.checkIfLoggedIn();
-}
-
-checkIfLoggedIn = () => {
-    firebase.auth().onAuthStateChanged(
-        function (user) {
-            if (user) {
-                this.props.navigation.navigate('HomePage');
-            }
-            else {
-                this.props.navigation.navigate('LoginPage');
-            }
-        }.bind(this)
-    );
-};  
-  
-  render() {
+    render() {
         return (
           <View style={styles.homestyle} > 
             <Text>Welcome to COVID Tracker!</Text>
