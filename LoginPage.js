@@ -37,6 +37,7 @@ class LoginPage extends React.Component {
                     this.props.navigation.replace('HomePage');
                 }
                 else {
+                    //this.props.navigation.replace('COVID_Data');
                     //otherwise if not signed in do nothing so user can sign in
                     //this.props.navigation.navigate('HomePage');
                 }

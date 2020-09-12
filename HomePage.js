@@ -33,7 +33,6 @@ class HomePage extends React.Component {
           title="See COVID Data"
           onPress={
             () => {
-            firebase.auth().signOut();
             this.props.navigation.navigate('COVID_Data');
           }
           }
