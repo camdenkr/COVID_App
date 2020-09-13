@@ -3,6 +3,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import * as firebase from 'firebase';
 import "firebase/auth";
+import { Button as MUIButton } from "react-native-material-ui";
+
 
 
 const styles = StyleSheet.create({
@@ -12,34 +14,58 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  title: {
+    textAlignVertical: 'top',
+    fontSize: 30,
+    marginTop: -325,
+    fontWeight: 'bold'
+  },
+  body: {
+    textAlignVertical: 'top',
+    fontSize: 30,
+    marginTop: 325,
+    fontWeight: 'bold'
+  },
+  separator: {
+    marginVertical: 8,
+    borderBottomColor: '#737373',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
 });
-
+const Separator = () => (
+  <View style={styles.separator} />
+);
 class HomePage extends React.Component {
-  
+
   render() {
     return (
       <View style={styles.homestyle} >
-        <Text>Welcome to COVID Tracker!</Text>
-        <Button
-          title="Sign Out"
-          onPress={
-            () => {
-            firebase.auth().signOut();
-            this.props.navigation.replace('LoginPage');
-          }
-          }
-        />
-        <Button
-          title="See COVID Data"
-          onPress={
-            () => {
-            this.props.navigation.navigate('COVID_Data');
-          }
-          }
-        />
+        <Text style={styles.title}>Welcome to COVID Tracker!</Text>
+        <View style={styles.body} >
+          <MUIButton
+            raised primary text="See COVID Data"
+            onPress={
+              () => {
+                this.props.navigation.navigate('COVID_Data');
+              }
+            }
+          />
+          <Separator />
+          <MUIButton
+            raised primary text ="Sign Out"
+            onPress={() => {
+                firebase.auth().signOut();
+                this.props.navigation.replace('LoginPage');
+              }
+            }
+          />
+        </View>
       </View>
     );
   }
 }
 
 export default HomePage;
+
+
+//<MUIButton style={{ "min-height": "56px", width: "0%" }} raised primary text = "Hello There" size = "small"/>
