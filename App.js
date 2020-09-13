@@ -6,6 +6,7 @@ import "firebase/auth";
 import HomePage from './HomePage';
 import LoginPage from './LoginPage';
 import COVID_Data from './COVID_Data';
+import Admin from './Admin';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 // Initialize Firebase
@@ -41,6 +42,10 @@ class App extends React.Component {
             <Stack.Screen
               name="COVID_Data"
               component={COVID_Data}
+            />
+            <Stack.Screen
+              name="Admin"
+              component={Admin}
             />
           </Stack.Navigator>
         </NavigationContainer>

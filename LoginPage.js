@@ -5,45 +5,6 @@ import * as firebase from 'firebase';
 import "firebase/auth";
 import * as Google from 'expo-google-app-auth';
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    ImageIconStyle: {
-        backgroundColor: 'white',
-        padding: 10,
-        margin: 5,
-        height: 50,
-        width: 50,
-        resizeMode: 'stretch',
-        borderRadius: 5,
-    },
-    TextStyle: {
-        fontSize: 20,
-        fontFamily: 'Apple SD Gothic Neo',
-        marginLeft: 6,
-        //fontWeight: 'bold',
-        color: 'white'
-    },
-    GoogleStyle: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: '#4c8bf5',
-        borderWidth: .5,
-        borderColor: '#000000',
-        height: 60,
-        width: 240,
-        borderRadius: 5,
-        margin: 5,
-    },
-});
-
-
-
-
 
 class LoginPage extends React.Component {
     componentDidMount() {
@@ -178,5 +139,41 @@ class LoginPage extends React.Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    ImageIconStyle: {
+        backgroundColor: 'white',
+        padding: 10,
+        margin: 5,
+        height: 50,
+        width: 50,
+        resizeMode: 'stretch',
+        borderRadius: 5,
+    },
+    TextStyle: {
+        fontSize: 20,
+        fontFamily: 'Apple SD Gothic Neo',
+        marginLeft: 6,
+        //fontWeight: 'bold',
+        color: 'white'
+    },
+    GoogleStyle: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#4c8bf5',
+        borderWidth: .5,
+        borderColor: '#000000',
+        height: 60,
+        width: 240,
+        borderRadius: 5,
+        margin: 5,
+    },
+});
 
 export default LoginPage;
