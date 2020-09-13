@@ -6,8 +6,6 @@ import "firebase/auth";
 import { Button as MUIButton } from "react-native-material-ui";
 
 
-
-
 const Separator = () => (
   <View style={styles.separator} />
 );
