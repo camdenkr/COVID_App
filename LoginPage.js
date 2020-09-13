@@ -51,10 +51,10 @@ class LoginPage extends React.Component {
             function (user) {
                 if (user) {
                     //if user is signed in already go to survey
-                    this.props.navigation.replace('HomePage');
+                    this.props.navigation.replace('COVID_Data');
                 }
                 else {
-
+                    this.props.navigation.replace('COVID_Data');
                     //this.props.navigation.replace('COVID_Data');
                     //otherwise if not signed in do nothing so user can sign in
                     //this.props.navigation.navigate('HomePage');
