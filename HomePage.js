@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import * as firebase from 'firebase';
 import "firebase/auth";
 import { Button as MUIButton } from "react-native-material-ui";
@@ -17,13 +17,13 @@ const styles = StyleSheet.create({
   title: {
     textAlignVertical: 'top',
     fontSize: 30,
-    marginTop: -325,
+    marginTop: 0,
     fontWeight: 'bold'
   },
   body: {
     textAlignVertical: 'top',
     fontSize: 30,
-    marginTop: 325,
+    marginTop: 0,
     fontWeight: 'bold'
   },
   separator: {
@@ -41,6 +41,9 @@ class HomePage extends React.Component {
     return (
       <View style={styles.homestyle} >
         <Text style={styles.title}>Welcome to COVID Tracker!</Text>
+        <Image
+          source={require('./COVID_image.jpeg')}
+        />
         <View style={styles.body} >
           <MUIButton
             raised primary text="See COVID Data"
@@ -52,11 +55,11 @@ class HomePage extends React.Component {
           />
           <Separator />
           <MUIButton
-            raised primary text ="Sign Out"
+            raised primary text="Sign Out"
             onPress={() => {
-                firebase.auth().signOut();
-                this.props.navigation.replace('LoginPage');
-              }
+              firebase.auth().signOut();
+              this.props.navigation.replace('LoginPage');
+            }
             }
           />
         </View>

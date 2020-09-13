@@ -13,26 +13,30 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     ImageIconStyle: {
+        backgroundColor: 'white',
         padding: 10,
-        margin: 12,
-        height: 35,
-        width: 35,
+        margin: 5,
+        height: 50,
+        width: 50,
         resizeMode: 'stretch',
+        borderRadius: 5,
     },
     TextStyle: {
-        fontSize: 17,
+        fontSize: 20,
+        fontFamily: 'Apple SD Gothic Neo',
+        marginLeft: 6,
         //fontWeight: 'bold',
-        color: 'black'
+        color: 'white'
     },
     GoogleStyle: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#ffffff',
+        backgroundColor: '#4c8bf5',
         borderWidth: .5,
         borderColor: '#000000',
         height: 60,
         width: 240,
-        borderRadius: 10,
+        borderRadius: 5,
         margin: 5,
     },
 });
@@ -51,10 +55,10 @@ class LoginPage extends React.Component {
             function (user) {
                 if (user) {
                     //if user is signed in already go to survey
-                    this.props.navigation.replace('COVID_Data');
+                    this.props.navigation.replace('HomePage');
                 }
                 else {
-                    this.props.navigation.replace('COVID_Data');
+                    //this.props.navigation.replace('COVID_Data');
                     //this.props.navigation.replace('COVID_Data');
                     //otherwise if not signed in do nothing so user can sign in
                     //this.props.navigation.navigate('HomePage');
@@ -167,7 +171,7 @@ class LoginPage extends React.Component {
                         source={require('./google_icon_131222.png')}
                         style={styles.ImageIconStyle}
                     />
-                    <Text style={styles.TextStyle}> Login With Google </Text>
+                    <Text style={styles.TextStyle}>Sign in with Google </Text>
                 </TouchableOpacity>
             </View>
 

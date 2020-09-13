@@ -8,6 +8,7 @@ import api from './utilities/api.js';
 
 const styles = StyleSheet.create({
   homestyle: {
+    fontFamily: 'Cochin',
     flex: 1,
     backgroundColor: '#ffff',
     alignItems: 'center',
@@ -49,29 +50,29 @@ class COVID_Data extends React.Component {
     return (
       <View style={styles.homestyle} >
         <Text style={styles.BigBold}>{this.state.country}</Text>
-        <Text style = {{fontSize: 20}}>Total Confirmed Cases: <Text style={{ fontWeight: 'bold' }}>{this.state.TotalConfirmed}</Text></Text>
-        <Text style = {{fontSize: 20}}>Total Deaths: <Text style={{ fontWeight: 'bold' }}>{this.state.TotalDeaths}</Text></Text>
-        <Text style = {{fontSize: 20}}>As of: <Text style={{ fontWeight: 'bold'}}>{this.state.Date[0]}{this.state.Date[1]}
+        <Text style = {{fontFamily: 'Cochin',fontSize: 20}}>Total Confirmed Cases: <Text style={{ fontWeight: 'bold' }}>{this.state.TotalConfirmed}</Text></Text>
+        <Text style = {{fontFamily: 'Cochin',fontSize: 20}}>Total Deaths: <Text style={{ fontWeight: 'bold' }}>{this.state.TotalDeaths}</Text></Text>
+        <Text style = {{fontFamily: 'Cochin',fontSize: 20}}>As of: <Text style={{ fontWeight: 'bold'}}>{this.state.Date[0]}{this.state.Date[1]}
           {this.state.Date[2]}{this.state.Date[3]}{this.state.Date[4]}
           {this.state.Date[5]}{this.state.Date[6]}{this.state.Date[7]}
           {this.state.Date[8]}{this.state.Date[9]}</Text></Text>
         <View style={{
           marginLeft: -150,
         }}>
-          <Text style={{fontWeight: 'bold', marginVertical: 10, fontSize: 20}}>
+          <Text style={{fontFamily: 'Cochin',fontWeight: 'bold', marginVertical: 10, fontSize: 20}}>
             Useful Links:</Text>
-            <Text style={{fontSize: 30, color: 'black'}}
+            <Text style={{fontFamily: 'Cochin',fontSize: 30, color: 'black'}}
            onPress={() => Linking.openURL('https://www.who.int/emergencies/diseases/novel-coronavirus-2019')}>
-            {'\u2023'} <Text style={{fontSize: 20, color: 'blue'}}>World Health Organization </Text></Text>
-            <Text style={{fontSize: 30, color: 'black'}}
+            {'\u2023'} <Text style={{fontFamily: 'Cochin',fontSize: 20, color: 'blue'}}>World Health Organization </Text></Text>
+            <Text style={{fontFamily: 'Cochin',fontSize: 30, color: 'black'}}
            onPress={() => Linking.openURL('https://www.cdc.gov/coronavirus/2019-ncov/index.html')}>
-            {'\u2023'} <Text style={{fontSize: 20, color: 'blue'}}> CDC</Text></Text>
-            <Text style={{fontSize: 30, color: 'black'}}
+            {'\u2023'} <Text style={{fontFamily: 'Cochin',fontSize: 20, color: 'blue'}}> CDC</Text></Text>
+            <Text style={{fontFamily: 'Cochin',fontSize: 30, color: 'black'}}
            onPress={() => Linking.openURL('https://covid-evidence.org/')}>
-            {'\u2023'} <Text style={{fontSize: 20, color: 'blue'}}> COVID Evidence</Text></Text>
-            <Text style={{fontSize: 30, color: 'black'}}
+            {'\u2023'} <Text style={{fontFamily: 'Cochin',fontSize: 20, color: 'blue'}}> COVID Evidence</Text></Text>
+            <Text style={{fontFamily: 'Cochin',fontSize: 30, color: 'black'}}
            onPress={() => Linking.openURL('https://www.bu.edu/healthway/community-dashboard/')}>
-            {'\u2023'} <Text style={{fontSize: 20, color: 'blue'}}> BU Testing Data Dashboard</Text></Text>
+            {'\u2023'} <Text style={{fontFamily: 'Cochin',fontSize: 20, color: 'blue'}}> BU Testing Data Dashboard</Text></Text>
         </View>
       </View>
     );
