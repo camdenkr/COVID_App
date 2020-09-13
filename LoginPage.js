@@ -2,14 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import * as firebase from 'firebase';
-//import firebase from 'firebase';
 import "firebase/auth";
-import { TextInput } from 'react-native-gesture-handler';
 import * as Google from 'expo-google-app-auth';
-import firebaseConfig from './App';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { FontAwesome } from '@expo/vector-icons';
 
 const styles = StyleSheet.create({
     container: {
@@ -155,8 +149,8 @@ class LoginPage extends React.Component {
             return { error: true };
         }
     };
-
     render() {
+
         return (
             <View style={styles.container}>
                 {/* <Image
@@ -164,20 +158,10 @@ class LoginPage extends React.Component {
                     fadeDuration={0}
                     style={{ width: 60, height: 60 }}
                 /> */}
-                {/* <FontAwesome.Button
-                    size={40}
-                    name="google"
-                    backgroundColor="#00cccc"
-                    onPress={() => {
-                        this.props.navigation.navigate('COVID_Data');
-                    }
-                    }>
-                    Login with Google
-                    </FontAwesome.Button> */}
                 <TouchableOpacity
                     onPress={() =>
                         this.signInWithGoogleAsync()
-                    } 
+                    }
                     style={styles.GoogleStyle} activeOpacity={0.5}>
                     <Image
                         source={require('./google_icon_131222.png')}
