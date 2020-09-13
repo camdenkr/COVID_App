@@ -50,12 +50,14 @@ class COVID_Data extends React.Component {
     return (
       <View style={styles.homestyle} >
         <Text style={styles.BigBold}>{this.state.country}</Text>
+        <Text style = {{fontFamily: 'Cochin',fontSize: 20}}>As of: <Text style={{ fontWeight: 'bold'}}>
+          {this.state.Date[5]}{this.state.Date[6]}{this.state.Date[7]}
+          {this.state.Date[8]}{this.state.Date[9]}{this.state.Date[4]}
+          {this.state.Date[0]}{this.state.Date[1]}
+          {this.state.Date[2]}{this.state.Date[3]}
+          </Text></Text>
         <Text style = {{fontFamily: 'Cochin',fontSize: 20}}>Total Confirmed Cases: <Text style={{ fontWeight: 'bold' }}>{this.state.TotalConfirmed}</Text></Text>
         <Text style = {{fontFamily: 'Cochin',fontSize: 20}}>Total Deaths: <Text style={{ fontWeight: 'bold' }}>{this.state.TotalDeaths}</Text></Text>
-        <Text style = {{fontFamily: 'Cochin',fontSize: 20}}>As of: <Text style={{ fontWeight: 'bold'}}>{this.state.Date[0]}{this.state.Date[1]}
-          {this.state.Date[2]}{this.state.Date[3]}{this.state.Date[4]}
-          {this.state.Date[5]}{this.state.Date[6]}{this.state.Date[7]}
-          {this.state.Date[8]}{this.state.Date[9]}</Text></Text>
         <View style={{
           marginLeft: -150,
         }}>

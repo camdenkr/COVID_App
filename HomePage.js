@@ -55,6 +55,15 @@ class HomePage extends React.Component {
           />
           <Separator />
           <MUIButton
+            raised primary text="Complete Survey"
+            // onPress={() => {
+            //   firebase.auth().signOut();
+            //   this.props.navigation.replace('SurveyPage');
+            // }
+            // }
+          />
+          <Separator />
+          <MUIButton
             raised primary text="Sign Out"
             onPress={() => {
               firebase.auth().signOut();
