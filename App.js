@@ -7,6 +7,7 @@ import HomePage from './HomePage';
 import LoginPage from './LoginPage';
 import COVID_Data from './COVID_Data';
 import Admin from './Admin';
+import Survey from './Survey'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 // Initialize Firebase
@@ -46,6 +47,10 @@ class App extends React.Component {
             <Stack.Screen
               name="Admin"
               component={Admin}
+            />
+            <Stack.Screen
+              name="Survey"
+              component={Survey}
             />
           </Stack.Navigator>
         </NavigationContainer>
