@@ -10,9 +10,20 @@ const Separator = () => (
   <View style={styles.separator} />
 );
 class HomePage extends React.Component {
-
+//width: "100%" ,display: "flex",
   render() {
     return (
+      <>
+      <View style={{backgroundColor: 'white', flexDirection: 'row', justifyContent: 'flex-end' }} >
+      <Button
+       title="Go to Admin View"
+       raised
+       onPress={() => {
+         this.props.navigation.navigate('Admin');
+       }
+       }
+     />
+     </View>
       <View style={styles.homestyle} >
         <Text style={styles.title}>Welcome to COVID Tracker!</Text>
         <Image
@@ -45,18 +56,10 @@ class HomePage extends React.Component {
             }
             }
           />
-          <View style={{marginTop: 50}} >
-           <Button
-            title="Go to Admin View"
-            raised
-            onPress={() => {
-              this.props.navigation.navigate('Admin');
-            }
-            }
-          />
-          </View>
+        
         </View>
       </View>
+      </>
     );
   }
 }
@@ -67,6 +70,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffff',
     alignItems: 'center',
     justifyContent: 'center',
+    height: "100%"
   },
   title: {
     textAlignVertical: 'top',
