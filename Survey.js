@@ -1,22 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import * as firebase from 'firebase';
-//import App from './App'
-import { Button as MUIButton, COLOR, ThemeContext, getTheme } from "react-native-material-ui";
-import 'firebase/firestore';
-//const dbh = firebase.firestore();
+import { Button as MUIButton, COLOR, ThemeContext, getTheme, withTheme } from "react-native-material-ui";
+import { color } from 'react-native-reanimated';
 
-// dbh.collection("characters").doc("mario").set({
-//     employment: "plumber",
-//     outfitColor: "red",
-//     specialAttack: "fireball"
-//   })
 
-const uiTheme = {
-    palette: {
-        primaryColor: COLOR.redA500,
-    },
-};
 
 var surveyResponses = {
     Q1: '',
@@ -31,6 +19,46 @@ var surveyResponses = {
 
 class Survey extends React.Component {
 
+    isSymptomatic = () => {
+        if (surveyResponses.Q1 == 'yes' ||
+            surveyResponses.Q2 == 'yes' ||
+            surveyResponses.Q3 == 'yes' ||
+            surveyResponses.Q4 == 'yes' ||
+            surveyResponses.Q5 == 'yes' ||
+            surveyResponses.Q6 == 'yes' ||
+            surveyResponses.Q7 == 'yes' ||
+            surveyResponses.Q8 == 'yes')
+            return true;
+        else
+            return false;
+    };
+
+    //stores user response and whether they are symptomatic in firestore
+    storeResponses = () => {
+        let today = new Date();
+        let date = parseInt(today.getMonth() + 1) + "-" + today.getDate() + "-" + today.getFullYear();
+        let symtpomatic = "false";
+        if (this.isSymptomatic()) {
+            symtpomatic = "true";
+        }
+        firebase.firestore()
+            .collection("Survey Responses")
+            .doc(date)
+            .collection(firebase.auth().currentUser.displayName)
+            .doc("Today's Responses")
+            .set({
+                last_updated: firebase.firestore.Timestamp.fromDate(new Date()),
+                symtpomatic: symtpomatic,
+                Q1: surveyResponses.Q1,
+                Q2: surveyResponses.Q2,
+                Q3: surveyResponses.Q3,
+                Q4: surveyResponses.Q4,
+                Q5: surveyResponses.Q5,
+                Q6: surveyResponses.Q6,
+                Q7: surveyResponses.Q7,
+                Q8: surveyResponses.Q8,
+            })
+    }
     constructor(props) {
         super(props);
         //one for each button, 11 is Q1 Yes, 12 is Q1 No, etc.
@@ -76,6 +104,7 @@ class Survey extends React.Component {
         else
             return true;
     };
+
     //each on press records response, then changes color of buttons respectively
     render() {
         return (
@@ -285,31 +314,28 @@ class Survey extends React.Component {
                             }
                         />
                     </View>
-                    <ThemeContext.Provider value={getTheme(uiTheme)}>
-                        <MUIButton
-                            raised primary text="SUBMIT"
-                            // primary color = '#ffffff'
-                            onPress={() => {
-                                //assigns variable correctly based on if survey has been completed  
-                                //if survey has not been completed, don't send data and alert
-                                if (!this.checkSurveyCompletion()) {
-                                    Alert.alert(
-                                        "Survey Incomplete",
-                                        "Please answer all questions before submitting",
-                                        [
-                                            { text: "OK" }
-                                        ],
-                                        { cancelable: false }
-                                    );
-                                }
-                                else 
-                                {
-                                    this.props.navigation.navigate('HomePage');
-                                }
+                    <MUIButton style={{ container: { backgroundColor: "#DE5246" } }}
+                        raised primary text="SUBMIT"
+                        onPress={() => {
+                            //assigns variable correctly based on if survey has been completed  
+                            //if survey has not been completed, don't send data and alert
+                            if (!this.checkSurveyCompletion()) {
+                                Alert.alert(
+                                    "Survey Incomplete",
+                                    "Please answer all questions before submitting.",
+                                    [
+                                        { text: "OK" }
+                                    ],
+                                    { cancelable: false }
+                                );
                             }
+                            else {
+                                this.storeResponses();
+                                this.props.navigation.navigate('HomePage');
                             }
-                        />
-                    </ThemeContext.Provider>
+                        }
+                        }
+                    />
                     <Text>*If you have a new positive test for COVID-19 from an outside facility and have not notified Healthway, please call Healthway 617-353-0550 during business hours 8AM-8PM.</Text>
 
                 </View>
