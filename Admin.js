@@ -25,9 +25,9 @@ class Admin extends React.Component {
           {
             this.state.users.map((item) => {
               return (
-                <View style={styles.infoContainer}>
-                  <Text>Email Address: {item.email}</Text>
-                  <Text>Presence of Symptoms: {item.symptoms}</Text>
+                <View style={(item.symptoms == 'Yes') ? (styles.infoContainerRed) : (styles.infoContainerGreen)}>
+                  <Text style={styles.textParams}>Email Address: {item.email}</Text>
+                  <Text style={styles.textParams}>Presence of Symptoms: {item.symptoms}</Text>
                 </View>
               );
             })
@@ -48,14 +48,25 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
 
-  infoContainer: {
+  infoContainerGreen: {
     elevation: 5,
     paddingVertical: 20,
     paddingHorizontal: 20,
     marginBottom: 10,
     width: '100%',
-    backgroundColor: 'rgb(97, 219, 251)'
+    backgroundColor: 'rgb(0,255,127)',
+    borderRadius: 15
   },
+
+  infoContainerRed: {
+    elevation: 5,
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+    marginBottom: 10,
+    width: '100%',
+    backgroundColor: 'rgb(255,0,0)',
+    borderRadius: 15
+  }
 });
 
 export default Admin;
