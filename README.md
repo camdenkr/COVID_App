@@ -24,3 +24,40 @@ Survey responses are saved through the use of Firebase Firestore. They are saved
 
 Admin  
 The admin page is theoretically only acceessbile to users with special privelages. These users will be able to navigate to this new page and see the following information: Users that are symptomatic, users that a asymptomatic, who filled out the forms, and who did not. Users that have responded can be viewed, and those that are symptomatic will be highlighted on that page. While on another page users that have not responded will be listed.
+
+
+
+Relevant Sources:
+
+https://reactnative.dev/docs/alert
+
+https://www.freecodecamp.org/news/react-native-firebase-tutorial/
+
+
+https://www.youtube.com/watch?v=n5kr99DAjDk
+https://www.digitalocean.com/community/tutorials/react-react-native-navigation
+
+
+https://www.youtube.com/watch?v=ZcaQJoXY-3Q
+
+https://firebase.google.com/docs/auth/web/google-signin
+
+
+https://blog.expo.io/expo-react-native-nasa-apis-9b37ad03626e
+
+
+https://rnfirebase.io
+https://expo.io
+
+
+https://stackoverflow.com/questions/59207062/change-color-of-touchableopacity-in-react-native
+
+
+https://aboutreact.com/image-icon-inside-the-react-native-button/#Output-Screenshots
+
+
+https://invertase.io/blog/getting-started-with-cloud-firestore-on-react-native
+
+
+https://reactnative.dev/docs/testing-overview
+https://callstack.github.io/react-native-testing-library/docs/getting-started/
