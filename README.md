@@ -25,6 +25,25 @@ Survey responses are saved through the use of Firebase Firestore. They are saved
 Admin  
 The admin page is theoretically only acceessbile to users with special privelages. These users will be able to navigate to this new page and see the following information: Users that are symptomatic, users that a asymptomatic, who filled out the forms, and who did not. Users that have responded can be viewed, and those that are symptomatic will be highlighted on that page. While on another page users that have not responded will be listed.
 
+Testing 
+
+Test Cases:
+"User can sign in using gmail by clicking on 'Sign in with Google' button." 
+"Admin can navigate to admin dashboard by clicking on 'Go to Admin View' button." 
+"User can navigate to page containing information about COVID-19 by clicking on 'SEE COVID DATA' button" 
+"User can navigate to survey by clicking on 'COMPLETE SURVEY' button." 
+"User can submit survey by answering all questions and clicking on 'SUBMIT' button"
+"User who does not answer all questions and clicks on 'SUBMIT' button, will not be able to submit survey answers."
+"When the same user submits multiple survey responses during the same day, only the first response will be registered."
+"User can navigate to home page by clicking on 'Home Page Button'."
+"User can sign out by clicking on 'SIGN OUT' button." 
+
+All tests passed.
+
+App Demo:
+https://www.youtube.com/watch?v=rFEmO-mKQrU
+
+
 
 
 Relevant Sources:
