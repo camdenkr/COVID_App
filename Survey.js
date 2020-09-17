@@ -109,12 +109,14 @@ class Survey extends React.Component {
     render() {
         return (
             <>
-                <View style={{ alignItems: 'center', backgroundColor: 'white', flex: 1 }} >
-                    <Text style={{ fontFamily: 'Cochin' }}>
-                        Are you experiencing any of the following symptoms
-                        (Please Note: These questions pertain only to new symptoms that have arisen in the past 14 days.)
+                <View style={{backgroundColor: 'white', flex: 1 ,padding: 10}} >
+                    <View style={{borderColor:'white', borderBottomWidth:20}}>
+                    <Text>
+                        Are you experiencing any of the following symptoms?
+                        (Questions pertain only to new symptoms that have arisen in the past 14 days.)
             </Text>
-                    <Text style={{ fontSize: 18, fontFamily: 'Cochin' }}>
+            </View>
+            <Text style={styles.Questions}>
                         Fever of 100 F, or feeling unusually hot (if no thermometer available) accompanied by shivering/chills
             </Text>
                     <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }} >
@@ -139,7 +141,7 @@ class Survey extends React.Component {
                             }
                         />
                     </View>
-                    <Text style={{ fontSize: 18, fontFamily: 'Cochin' }}>
+                    <Text style={styles.Questions}>
                         New cough not related to chronic condition
             </Text>
                     <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }} >
@@ -164,7 +166,7 @@ class Survey extends React.Component {
                             }
                         />
                     </View>
-                    <Text style={{ fontSize: 18, fontFamily: 'Cochin' }}>
+                    <Text style={styles.Questions}>
                         Difficulty breathing, Shortness of breath
             </Text>
                     <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }} >
@@ -189,7 +191,7 @@ class Survey extends React.Component {
                             }
                         />
                     </View>
-                    <Text style={{ fontSize: 18, fontFamily: 'Cochin' }}>
+                    <Text style={styles.Questions}>
                         Sore Throat
             </Text>
                     <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }} >
@@ -214,7 +216,7 @@ class Survey extends React.Component {
                             }
                         />
                     </View>
-                    <Text style={{ fontSize: 18, fontFamily: 'Cochin' }}>
+                    <Text style={styles.Questions}>
                         New loss of taste or smell
             </Text>
                     <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }} >
@@ -239,7 +241,7 @@ class Survey extends React.Component {
                             }
                         />
                     </View>
-                    <Text style={{ fontSize: 18, fontFamily: 'Cochin' }}>
+                    <Text style={styles.Questions}>
                         Vomiting
             </Text>
                     <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }} >
@@ -264,7 +266,7 @@ class Survey extends React.Component {
                             }
                         />
                     </View>
-                    <Text style={{ fontSize: 18, fontFamily: 'Cochin' }}>
+                    <Text style={styles.Questions}>
                         Severe fatigue
             </Text>
                     <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }} >
@@ -289,7 +291,7 @@ class Survey extends React.Component {
                             }
                         />
                     </View>
-                    <Text style={{ fontSize: 18, fontFamily: 'Cochin' }}>
+                    <Text style={styles.Questions}>
                         Severe muscle aches
             </Text>
                     <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }} >
@@ -343,5 +345,9 @@ class Survey extends React.Component {
         );
     }
 }
-
+const styles = StyleSheet.create({
+    Questions: {
+        fontSize: 15
+    }
+});
 export default Survey;
