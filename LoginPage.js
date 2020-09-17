@@ -5,7 +5,8 @@ import * as firebase from 'firebase';
 import "firebase/auth";
 import * as Google from 'expo-google-app-auth';
 
-
+let today = new Date();
+let date = parseInt(today.getMonth() + 1) + "-" + today.getDate() + "-" + today.getFullYear();
 class LoginPage extends React.Component {
     componentDidMount() {
         this.checkIfLoggedIn();
@@ -54,27 +55,48 @@ class LoginPage extends React.Component {
                     //googleUser.getAuthResponse().id_token
                 );
                 // Sign in with credential from the Google user.
+                //Setting up user_list if a new user and setting up date ref if it hasn't been created yet
                 firebase.auth().signInWithCredential(credential).then(function (result) {
+                    //a new user logging in will check if a reference to today's survey has been created yet, if it hasn't, we will create one so that there is some information for the admins
+                    let created;
+                    //check the result of the reference, if it is null then the reference does note exist
+                    let ref = firebase.database().ref("Survey Reponses").child(date);
+                    ref.on(
+                        "value",
+                        function (snapshot) {
+                            if (snapshot.val())
+                                created = true;
+                            else
+                                created = false;
+                        }
+                    );
+                    //make the reference if not created
+                    if (!created) {
+                        firebase
+                            .database()
+                            .ref('Survey Responses/' + date + '/' + result.user.uid)
+                            .update({
+                                gmail: result.user.email,
+                                name: result.additionalUserInfo.profile.given_name + ' ' + result.additionalUserInfo.profile.family_name,
+                            })
+                    }
+                    //if new user
                     if (result.additionalUserInfo.isNewUser) {
                         //save user to firebase database with the following information
                         firebase
                             .database()
-                            .ref('/users/' + result.user.uid)
+                            .ref('/user_list/' + result.user.uid)
                             .set({
                                 gmail: result.user.email,
-                                first_name: result.additionalUserInfo.profile.given_name,
-                                last_name: result.additionalUserInfo.profile.family_name,
-                                created_at: Date.now()
+                                name: result.additionalUserInfo.profile.given_name + ' ' + result.additionalUserInfo.profile.family_name,
                             })
-                        //.then(function (snapshot)
-                        //{});
+
+
+
                     }
                     else {
-                        firebase
-                            .database()
-                            .ref('/users/' + result.user.uid).update({
-                                last_logged_in: Date.now()
-                            })
+                        //still check the survey
+
                     }
                 })
                     .catch(function (error) {

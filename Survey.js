@@ -41,13 +41,12 @@ class Survey extends React.Component {
         if (this.isSymptomatic()) {
             symtpomatic = "true";
         }
-        firebase.firestore()
-            .collection("Survey Responses")
-            .doc(date)
-            .collection(firebase.auth().currentUser.displayName)
-            .doc("Today's Responses")
-            .set({
-                last_updated: firebase.firestore.Timestamp.fromDate(new Date()),
+        //firebase.auth().currentUser.
+        firebase
+        .database()
+        .ref("Survey Responses")
+        .child(date + '/' + firebase.auth().currentUser.uid)
+        .update({
                 symtpomatic: symtpomatic,
                 Q1: surveyResponses.Q1,
                 Q2: surveyResponses.Q2,
