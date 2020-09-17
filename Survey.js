@@ -47,7 +47,8 @@ class Survey extends React.Component {
         .ref("Survey Responses")
         .child(date + '/' + firebase.auth().currentUser.uid)
         .update({
-                symtpomatic: symtpomatic,
+                symptomatic: symtpomatic,
+                has_responded_today: 'yes',
                 Q1: surveyResponses.Q1,
                 Q2: surveyResponses.Q2,
                 Q3: surveyResponses.Q3,

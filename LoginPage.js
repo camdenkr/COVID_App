@@ -78,6 +78,7 @@ class LoginPage extends React.Component {
                             .update({
                                 gmail: result.user.email,
                                 name: result.additionalUserInfo.profile.given_name + ' ' + result.additionalUserInfo.profile.family_name,
+                                has_responded_today: 'no',
                             })
                     }
                     //if new user
@@ -95,7 +96,14 @@ class LoginPage extends React.Component {
 
                     }
                     else {
-                        //still check the survey
+                        firebase
+                            .database()
+                            .ref('Survey Responses/' + date + '/' + result.user.uid)
+                            .update({
+                                gmail: result.user.email,
+                                name: result.additionalUserInfo.profile.given_name + ' ' + result.additionalUserInfo.profile.family_name,
+                                has_responded_today: 'no'
+                            })
 
                     }
                 })
