@@ -60,12 +60,12 @@ class LoginPage extends React.Component {
                     //a new user logging in will check if a reference to today's survey has been created yet, if it hasn't, we will create one so that there is some information for the admins
                     let created;
                     //check the result of the reference, if it is null then the reference does note exist
-                    let ref = firebase.database().ref("Survey Reponses").child(date);
+                    let ref = firebase.database().ref("Survey Responses").child(date);
                     ref.on(
                         "value",
                         function (snapshot) {
-                            if (snapshot.val())
-                                created = true;
+                            if (snapshot.val()){
+                                created = true;}
                             else
                                 created = false;
                         }
@@ -96,14 +96,32 @@ class LoginPage extends React.Component {
 
                     }
                     else {
-                        firebase
-                            .database()
-                            .ref('Survey Responses/' + date + '/' + result.user.uid)
-                            .update({
-                                gmail: result.user.email,
-                                name: result.additionalUserInfo.profile.given_name + ' ' + result.additionalUserInfo.profile.family_name,
-                                has_responded_today: 'no'
-                            })
+                        //now that we have made sure the date reference exsits, we want to check if the user specific reference exists so that if it does, we don't overwrite the "has responded"
+                        //flag just because they logged out and back in again
+                        ref = firebase.database().ref("Survey Responses/" + date + '/' + result.user.uid);
+                        ref.on(
+                            "value",
+                            function (snapshot) {
+                                if (snapshot.val()) {
+                                    created = true;
+                                    console.log(snapshot.val());
+                                }
+                                else {
+                                    created = false;
+                                }
+                            }
+                        );
+                        //make the reference if not created
+                        if (!created) {
+                            firebase
+                                .database()
+                                .ref('Survey Responses/' + date + '/' + result.user.uid)
+                                .update({
+                                    gmail: result.user.email,
+                                    name: result.additionalUserInfo.profile.given_name + ' ' + result.additionalUserInfo.profile.family_name,
+                                    has_responded_today: 'no',
+                                })
+                        }
 
                     }
                 })
