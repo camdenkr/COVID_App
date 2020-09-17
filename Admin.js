@@ -6,7 +6,6 @@ import "firebase/auth";
 import { isEnabled } from 'react-native/Libraries/Performance/Systrace';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { PieChart } from 'react-minimal-pie-chart';
 let today = new Date();
 let date = parseInt(today.getMonth() + 1) + "-" + today.getDate() + "-" + today.getFullYear();
 //let SurveyResponseRef = firebase.firestore().collection("Survey Responses");
