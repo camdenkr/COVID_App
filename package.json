@@ -23,6 +23,7 @@
     "prop-types": "^15.7.2",
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
+    "react-minimal-pie-chart": "^8.0.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
     "react-native-gesture-handler": "~1.6.0",
     "react-native-google-signin": "^2.1.1",

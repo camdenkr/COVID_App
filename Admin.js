@@ -6,6 +6,7 @@ import "firebase/auth";
 import { isEnabled } from 'react-native/Libraries/Performance/Systrace';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { PieChart } from 'react-minimal-pie-chart';
 let today = new Date();
 let date = parseInt(today.getMonth() + 1) + "-" + today.getDate() + "-" + today.getFullYear();
 //let SurveyResponseRef = firebase.firestore().collection("Survey Responses");
@@ -21,6 +22,8 @@ var state_obj = {};
 //keeps data from constantly being retrieved
 let data_retrieved = false;
 
+let percentSymptomatic;
+
 class Admin extends React.Component {
 
 
@@ -31,6 +34,22 @@ class Admin extends React.Component {
         if (!data_retrieved)
             this.retrieveData();
 
+    }
+
+    calculatePercent = () => {
+        let i = 0;
+        let total_nonsymp = 0;
+        let total_symp = 0;
+        for (i = 0; i < the_state.length; i++) {
+            if (the_state[i].symptoms == 'Yes')
+                total_symp = total_symp + 1;
+            else if (the_state[i].symptoms == 'No')
+                total_nonsymp = total_nonsymp + 1;
+        }
+        if (total_nonsymp == 0)
+            percentSymptomatic = 100;
+        else
+            percentSymptomatic = 100 * (total_symp / (total_nonsymp + total_symp));
     }
 
     checkNoResponse = () => {
@@ -51,11 +70,12 @@ class Admin extends React.Component {
                 state_obj["name"] = unresponsive_user.name;
                 state_obj["email"] = unresponsive_user.gmail;
                 state_obj["Response"] = 'No';
-                state_obj["symptoms"] = 'User has not completed Survey';
+                state_obj["symptoms"] = 'User has not completed survey today';
                 the_state.push(state_obj);
                 state_obj = {};
             }
         }
+        this.calculatePercent();
     }
 
     //add users and record whether they are symptomatic or not for the UI
@@ -67,7 +87,7 @@ class Admin extends React.Component {
             let no_str = "no"
             if (obj.has_responded_today == no_str) {
                 state_obj["Response"] = 'No';
-                state_obj["symptoms"] = 'User has not completed Survey';
+                state_obj["symptoms"] = 'User has not completed survey today';
             }
             else if (obj.symptomatic == "false") {
                 state_obj["Response"] = 'Yes';
@@ -134,6 +154,9 @@ class Admin extends React.Component {
                     }
                     }
                 />
+                <Text style={{ fontSize: 30, fontFamily: 'Cochin', paddingLeft: 10 }}>
+                    <Text style={{ fontWeight: 'bold' }} >{percentSymptomatic}% </Text>Symptomatic Students Today
+                </Text>
                 <View style={styles.wholeScreen}>
                     {
                         the_state.map((item) => {
