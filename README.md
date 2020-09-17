@@ -31,13 +31,13 @@ Test Cases:
 
 "User can sign in using gmail by clicking on 'Sign in with Google' button." 
 
-"Admin can navigate to admin dashboard by clicking on 'Go to Admin View' button." 
+"User can navigate to admin dashboard by clicking on 'Go to Admin View' button." 
 
-"User can navigate to page containing information about COVID-19 by clicking on 'SEE COVID DATA' button" 
+"User can navigate to page containing information about COVID-19 by clicking on 'SEE COVID DATA' button." 
 
 "User can navigate to survey by clicking on 'COMPLETE SURVEY' button." 
 
-"User can submit survey by answering all questions and clicking on 'SUBMIT' button"
+"User can submit survey by answering all questions and clicking on 'SUBMIT' button."
 
 "User who does not answer all questions and clicks on 'SUBMIT' button, will not be able to submit survey answers."
 
