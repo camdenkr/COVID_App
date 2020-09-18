@@ -29,7 +29,13 @@ Testing
 
 Test Cases:
 
-"User can sign in using gmail by clicking on 'Sign in with Google' button." 
+"Login button connects to Google API and only allows BU users to login"
+
+"Users will always be navigated to home page after signing in"
+
+"When a user signs in, if no survey response for the current day exists, one is created"
+
+"If user logs in does not exist in the user list, their information is recorded"
 
 "User can navigate to admin dashboard by clicking on 'Go to Admin View' button." 
 
@@ -41,11 +47,21 @@ Test Cases:
 
 "User who does not answer all questions and clicks on 'SUBMIT' button, will not be able to submit survey answers."
 
-"When the same user submits multiple survey responses during the same day, only the first response will be registered."
+"When the same user submits multiple survey responses during the same day, only the latest response is kept to allow users to edit should they submit incorrectly"
 
 "User can navigate to home page by clicking on 'Home Page Button'."
 
+"COVID Data API updates as the API updates"
+
+"Users are shown in different colors representative of whether they have submitted a response and are/aren't symptomatic, or if they have not submitted the form"
+
+"As more users are added to the database, the screen will fill dynamically and allow scrolling when refreshed"
+
+"Percent users that are symptomatic is shown and updated"
+
 "User can sign out by clicking on 'SIGN OUT' button." 
+
+"Users that are signed out are redirected to the login page where they must log back in to access other parts of the app"
 
 All tests passed.
 
